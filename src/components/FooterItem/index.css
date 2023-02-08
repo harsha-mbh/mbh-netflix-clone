@@ -1,0 +1,29 @@
+.footer-container {
+  margin-top: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-icons-container {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.footer-icon {
+  width: 21px;
+  height: 21px;
+  color: #ffffff;
+  margin-right: 24px;
+}
+.footer-description {
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: 'Roboto';
+  margin-top: 0px;
+  margin-right: 24px;
+}

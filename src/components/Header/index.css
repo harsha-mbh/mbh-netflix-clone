@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: transparent;
+  align-items: center;
+  height: 100px;
+}
+
+.website-logo-desktop {
+  width: 180px;
+  height: 52px;
+  margin-top: 48px;
+  margin-left: 165px;
+}
+
+@media screen and (max-width: 767px) {
+  .website-logo-desktop {
+    display: none;
+  }
+}
+
+.website-logo-mobile {
+  width: 100px;
+  height: 27px;
+  margin-top: 32px;
+  margin-left: 32px;
+}
+@media screen and (min-width: 768px) {
+  .website-logo-mobile {
+    display: none;
+  }
+}

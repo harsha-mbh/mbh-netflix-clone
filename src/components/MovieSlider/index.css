@@ -1,0 +1,23 @@
+.logo-image {
+  margin: 0px 30px;
+  width: 254px;
+  height: 170px;
+  border-radius: 8px;
+  border: none;
+}
+.slick-prev:before {
+  color: #ffffff;
+  width: 56px;
+  height: 56px;
+}
+.slick-next:before {
+  color: #ffffff;
+  width: 56px;
+  height: 56px;
+}
+.slider-container {
+  width: 90%;
+  margin-bottom: 32px;
+  align-items: center;
+  justify-content: center;
+}
