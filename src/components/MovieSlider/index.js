@@ -1,4 +1,5 @@
 import Slider from 'react-slick'
+import {Link} from 'react-router-dom'
 import './index.css'
 
 const MovieSlider = props => {
@@ -39,7 +40,9 @@ const MovieSlider = props => {
         const {id, posterPath, title} = eachMovie
         return (
           <div className="slick-item" key={id}>
-            <img className="logo-image" src={posterPath} alt={title} />
+            <Link to={`/movies/${id}`}>
+              <img className="logo-image" src={posterPath} alt={title} />
+            </Link>
           </div>
         )
       })}

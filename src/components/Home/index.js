@@ -104,17 +104,19 @@ class Home extends Component {
     return <HomeMoviePoster posterDetails={posterItem} />
   }
 
+  onClickTryPoster = () => this.getPosterItem()
+
   renderPosterFailureView = () => (
     <div className="poster-view-container">
       <img
         src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675833886/alert-trianglealert_aup4gv.png"
         className="alert-image"
-        alt="alert"
+        alt="failure view"
       />
       <p className="failure-description">
         Something went wrong. Please try again
       </p>
-      <button type="button" className="try-btn">
+      <button type="button" className="try-btn" onClick={this.onClickTryPoster}>
         Try Again
       </button>
     </div>
@@ -151,17 +153,45 @@ class Home extends Component {
     return <MovieSlider moviesList={trendingList} />
   }
 
-  renderFailureView = () => (
+  onClickTryTrending = () => this.getTrendingItems()
+
+  renderTrendingFailureView = () => (
     <div className="movies-view-container">
       <img
         src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675833886/alert-trianglealert_aup4gv.png"
         className="alert-image"
-        alt="alert"
+        alt="failure view"
       />
       <p className="failure-description">
         Something went wrong. Please try again
       </p>
-      <button type="button" className="try-btn">
+      <button
+        type="button"
+        className="try-btn"
+        onClick={this.onClickTryTrending}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  onClickTryOriginals = () => this.getOriginalItems()
+
+  renderOriginalsFailureView = () => (
+    <div className="movies-view-container">
+      <img
+        src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675833886/alert-trianglealert_aup4gv.png"
+        className="alert-image"
+        alt="failure view"
+      />
+      <p className="failure-description">
+        Something went wrong. Please try again
+      </p>
+      <button
+        type="button"
+        className="try-btn"
+        onClick={this.onClickTryOriginals}
+      >
         Try Again
       </button>
     </div>
@@ -178,7 +208,7 @@ class Home extends Component {
       case 'SUCCESS':
         return this.renderTrendingSuccessView()
       case 'FAILURE':
-        return this.renderFailureView()
+        return this.renderTrendingFailureView()
       case 'LOADING':
         return this.renderLoadingView()
       default:
@@ -192,7 +222,7 @@ class Home extends Component {
       case 'SUCCESS':
         return this.renderOriginalsSuccessView()
       case 'FAILURE':
-        return this.renderFailureView()
+        return this.renderOriginalsFailureView()
       case 'LOADING':
         return this.renderLoadingView()
       default:
@@ -203,18 +233,20 @@ class Home extends Component {
   render() {
     return (
       <>
-        {this.renderPosterView()}
-        <div className="bottom-container">
-          <div className="bottom-responsive-container">
-            <div className="sliders-container">
-              <h1 className="bottom-section-headings">Trending Now</h1>
-              {this.renderTrendingMovies()}
+        <div className="home-page-container">
+          {this.renderPosterView()}
+          <div className="bottom-container">
+            <div className="bottom-responsive-container">
+              <div className="sliders-container">
+                <h1 className="bottom-section-headings">Trending Now</h1>
+                {this.renderTrendingMovies()}
+              </div>
+              <div className="sliders-container">
+                <h1 className="bottom-section-headings">Originals</h1>
+                {this.renderOriginalMovies()}
+              </div>
+              <FooterItem />
             </div>
-            <div className="sliders-container">
-              <h1 className="bottom-section-headings">Originals</h1>
-              {this.renderOriginalMovies()}
-            </div>
-            <FooterItem />
           </div>
         </div>
       </>

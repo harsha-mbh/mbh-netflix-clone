@@ -1,0 +1,9 @@
+.movie-details-page {
+  min-height: 100vh;
+  background-color: #181818;
+}
+.backdrop-container {
+  background-size: cover;
+  height: 501px;
+  width: 100%;
+}
