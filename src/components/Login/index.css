@@ -2,6 +2,8 @@
   background-image: url('https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675404019/netfilx_login_large_wrijqh.png');
   background-size: cover;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 @media screen and (max-width: 767px) {
   .login-page-container {
@@ -10,26 +12,12 @@
   }
 }
 
-.responsive-container {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-  position: absolute;
-}
-
-@media screen and (max-width: 767px) {
-  .responsive-container {
-    width: 100%;
-    margin-left: 32px;
-  }
-}
-
 .form-container {
   width: 456px;
   height: 440px;
+  position: absolute;
+  left: 492px;
+  top: 200px;
   background-color: #0c0b10;
   display: flex;
   flex-direction: column;
@@ -40,6 +28,8 @@
   .form-container {
     background-color: transparent;
     width: 100%;
+    top: 164px;
+    left: 32px;
   }
 }
 
@@ -128,5 +118,20 @@
   .error-msg {
     height: 18px;
     margin-left: 48px;
+  }
+}
+.website-logo {
+  width: 180px;
+  height: 52px;
+  position: absolute;
+  left: 165px;
+  top: 48px;
+}
+@media screen and (max-width: 767px) {
+  .website-logo {
+    width: 100px;
+    height: 27px;
+    top: 32px;
+    left: 32px;
   }
 }

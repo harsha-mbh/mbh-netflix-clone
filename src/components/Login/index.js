@@ -1,7 +1,6 @@
 import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import Header from '../Header'
 import './index.css'
 
 class Login extends Component {
@@ -53,7 +52,11 @@ class Login extends Component {
     const {username, password, showSubmitError, errorMsg} = this.state
     return (
       <div className="login-page-container">
-        <Header />
+        <img
+          src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675404435/Group_7399logo_large_pbhqqr.png"
+          alt="login website logo"
+          className="website-logo"
+        />
         <div className="responsive-container">
           <form className="form-container" onSubmit={this.onSubmitLogin}>
             <h1 className="form-heading">Login</h1>

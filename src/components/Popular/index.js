@@ -23,6 +23,8 @@ class Popular extends Component {
     )
   }
 
+  onClickTryAgain = () => this.getPopularMovies()
+
   getPopularMovies = async () => {
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = 'https://apis.ccbp.in/movies-app/popular-movies'
@@ -81,7 +83,7 @@ class Popular extends Component {
       <p className="failure-description">
         Something went wrong. Please try again
       </p>
-      <button className="try-btn" type="button">
+      <button className="try-btn" type="button" onClick={this.onClickTryAgain}>
         Try Again
       </button>
     </div>

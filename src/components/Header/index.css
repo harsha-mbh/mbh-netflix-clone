@@ -1,7 +1,6 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   background-color: transparent;
   align-items: center;
   height: 100px;
@@ -12,6 +11,7 @@
   height: 52px;
   margin-top: 48px;
   margin-left: 165px;
+  margin-right: 48px;
 }
 
 @media screen and (max-width: 767px) {
@@ -30,4 +30,40 @@
   .website-logo-mobile {
     display: none;
   }
+}
+.nav-menu {
+  list-style-type: none;
+
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 48px;
+}
+.nav-link {
+  margin-right: 24px;
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 400;
+}
+.menu-link {
+  text-decoration: none;
+}
+.search-btn {
+  margin-left: auto;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  margin-right: 32px;
+  margin-top: 42px;
+}
+.profile-img {
+  width: 48px;
+  height: 48px;
+  margin-top: 42px;
+  margin-right: 165px;
 }
