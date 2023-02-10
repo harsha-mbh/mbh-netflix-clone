@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import './index.css'
 
 class Login extends Component {
-  state = {username: '', password: '', showSubmitError: false, errorMsg: ''}
+  state = {showSubmitError: false, errorMsg: '', username: '', password: ''}
 
   onChangeUsername = event => {
     this.setState({username: event.target.value})
@@ -16,6 +16,9 @@ class Login extends Component {
 
   onLoginSuccess = jwtToken => {
     Cookies.set('jwt_token', jwtToken, {expires: 30})
+    const {username, password} = this.state
+    Cookies.set('username', username, {expires: 30})
+    Cookies.set('password', password, {expires: 30})
     const {history} = this.props
     history.replace('/')
   }
@@ -49,7 +52,8 @@ class Login extends Component {
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
-    const {username, password, showSubmitError, errorMsg} = this.state
+    const {showSubmitError, errorMsg, username, password} = this.state
+    console.log(this.props)
     return (
       <div className="login-page-container">
         <img

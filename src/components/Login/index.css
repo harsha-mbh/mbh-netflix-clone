@@ -95,6 +95,7 @@
   color: #f8fafc;
   font-weight: 700;
   font-family: 'Roboto';
+  cursor: pointer;
 }
 .btn-container {
   padding-left: 48px;

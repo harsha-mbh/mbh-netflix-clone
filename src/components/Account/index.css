@@ -1,0 +1,83 @@
+.account-page-container {
+  background-color: #181818;
+  min-height: 100vh;
+}
+.account-details-container {
+  width: 100%;
+  height: 700px;
+  background-color: #e5e5e5;
+  padding-top: 64px;
+  margin-top: 32px;
+}
+.responsive-container {
+  margin-left: 165px;
+  margin-right: 165px;
+  display: flex;
+  flex-direction: column;
+}
+.page-heading {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 36px;
+  color: #131313;
+}
+.separator {
+  width: 100%;
+  color: #cbd5e1;
+  height: 2px;
+}
+.details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.details-description {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 24px;
+  color: #94a3b8;
+  align-self: flex-start;
+  margin-top: 22px;
+  margin-right: 25px;
+}
+.name-password-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.email {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 24px;
+  margin-right: 16px;
+}
+.password {
+  color: #64748b;
+  font-family: 'Roboto';
+  margin-top: 0px;
+  font-weight: 400;
+  font-size: 24px;
+}
+.plan-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.plan-resolution {
+  border: 1px solid #1e293b;
+  border-radius: 2px;
+  padding: 2px 4px;
+  color: #1e293b;
+}
+.logout-btn {
+  align-self: center;
+  background-color: #e50914;
+  color: #ffffff;
+  font-family: 'Roboto';
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 64px;
+  cursor: pointer;
+}

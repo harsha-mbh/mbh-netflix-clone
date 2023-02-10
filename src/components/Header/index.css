@@ -52,9 +52,6 @@
   text-decoration: none;
 }
 .search-btn {
-  margin-left: auto;
-  width: 24px;
-  height: 24px;
   background: transparent;
   border: none;
   color: #ffffff;
@@ -65,5 +62,19 @@
   width: 48px;
   height: 48px;
   margin-top: 42px;
+}
+.search-account-container {
+  margin-left: auto;
   margin-right: 165px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.input-field {
+  margin-top: 42px;
 }

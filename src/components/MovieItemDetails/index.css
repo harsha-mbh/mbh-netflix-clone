@@ -1,9 +1,147 @@
 .movie-details-page {
   min-height: 100vh;
   background-color: #181818;
+  overflow-y: auto;
 }
 .backdrop-container {
   background-size: cover;
   height: 501px;
   width: 100%;
+}
+.backdrop-details-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 165px;
+}
+.backdrop-title {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 48px;
+  color: #ffffff;
+}
+.duration-date-container {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding-left: 0px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+.duration {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+  margin-right: 16px;
+}
+.adult {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+  margin-right: 16px;
+  padding: 2px 12px;
+  border: 1px solid #ffffff;
+}
+.release-year {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+}
+.backdrop-overview {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 20px;
+  color: #ffffff;
+  margin-right: 32px;
+}
+.play-btn {
+  width: 74px;
+  height: 40px;
+  border-radius: 3px;
+  padding: 8px 24px;
+  border: none;
+}
+.movie-details-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 165px;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.each-detail-container {
+  display: flex;
+  flex-direction: column;
+}
+.details-title {
+  color: #94a3b8;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 600;
+}
+.details-list-container {
+  padding-left: 0px;
+  list-style-type: none;
+  margin-top: 0px;
+}
+.details-description {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  color: #ffffff;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+.similar-movies-container {
+  margin-left: 165px;
+}
+.similar-movies-heading {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff;
+}
+.similar-movies-list-container {
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+.failure-view-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.failure-image {
+  width: 375px;
+  height: 276px;
+  margin-bottom: 32px;
+}
+.failure-description {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+.try-btn {
+  width: 100px;
+  height: 48px;
+  border-radius: 3px;
+  border: none;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+.loader-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -1,0 +1,49 @@
+.search-page-container {
+  background-color: #181818;
+  min-height: 100vh;
+}
+.loader-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.failure-view-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+}
+.failure-image {
+  width: 375px;
+  height: 276px;
+  margin-bottom: 32px;
+}
+.failure-description {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+.try-btn {
+  width: 100px;
+  height: 48px;
+  border-radius: 3px;
+  border: none;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+.search-results-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 0px;
+  margin-left: 165px;
+  margin-top: 32px;
+  flex-grow: 1;
+}
