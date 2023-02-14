@@ -21,7 +21,7 @@ const Account = props => {
           <h1 className="page-heading">Account</h1>
           <hr className="separator" />
           <div className="details-container">
-            <p className="details-description">Membership</p>
+            <p className="details-description">Member ship</p>
             <div className="name-password-container">
               <p className="email">{`${username}@gmail.com`}</p>
               <p className="password">{`Password : ${maskedPassword}`}</p>

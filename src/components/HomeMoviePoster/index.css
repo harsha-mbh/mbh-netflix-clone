@@ -32,4 +32,28 @@
   border: none;
   border-radius: 3px;
 }
-
+@media screen and (max-width: 767px) {
+  .poster-container {
+    position: absolute;
+  }
+  .poster-details-container {
+    margin-left: 32px;
+    height: 447px;
+    margin-top: 50px;
+  }
+  .title {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  .overview {
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 296px;
+  }
+  .play-btn {
+    width: 76px;
+    height: 32px;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}

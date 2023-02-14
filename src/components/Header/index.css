@@ -4,8 +4,19 @@
   background-color: transparent;
   align-items: center;
   height: 100px;
+  background-color: #131313;
+  opacity: 0.2;
 }
-
+@media screen and (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+.nav-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 .website-logo-desktop {
   width: 180px;
   height: 52px;
@@ -16,29 +27,29 @@
 
 @media screen and (max-width: 767px) {
   .website-logo-desktop {
-    display: none;
+    width: 100px;
+    height: 27px;
+    margin-top: 32px;
+    margin-left: 32px;
   }
 }
 
-.website-logo-mobile {
-  width: 100px;
-  height: 27px;
-  margin-top: 32px;
-  margin-left: 32px;
-}
-@media screen and (min-width: 768px) {
-  .website-logo-mobile {
-    display: none;
-  }
-}
 .nav-menu {
   list-style-type: none;
-
   padding-left: 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 48px;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-menu {
+    display: none;
+  }
+  .profile-img {
+    display: none;
+  }
 }
 .nav-link {
   margin-right: 24px;
@@ -55,7 +66,8 @@
   background: transparent;
   border: none;
   color: #ffffff;
-  margin-right: 32px;
+  cursor: pointer;
+  margin-right: 20px;
   margin-top: 42px;
 }
 .profile-img {
@@ -70,11 +82,60 @@
   flex-direction: row;
   align-items: center;
 }
+@media screen and (max-width: 767px) {
+  .search-account-container {
+    margin-right: 32px;
+  }
+}
 .search-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: transparent;
 }
 .input-field {
   margin-top: 42px;
+}
+@media screen and (max-width: 767px) {
+  .input-field {
+    min-width: 80px;
+    max-width: 150px;
+  }
+}
+.menu-btn {
+  background-color: transparent;
+  border: none;
+  margin-top: 42px;
+  color: #ffffff;
+}
+@media screen and (min-width: 768px) {
+  .menu-btn {
+    display: none;
+  }
+  .mobile-menu-list-container {
+    display: none;
+  }
+}
+.mobile-menu-list-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 0px;
+  margin-left: 32px;
+  align-self: flex-start;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.cross-btn {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  margin-right: 32px;
+}
+.active {
+  font-weight: bold;
+}
+.transparant {
+  background-color: transparent;
+  opacity: unset;
 }

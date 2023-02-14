@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import HomeMoviePoster from '../HomeMoviePoster'
 import MovieSlider from '../MovieSlider'
+import Header from '../Header'
 import FooterItem from '../FooterItem'
 import './index.css'
 
@@ -107,25 +108,35 @@ class Home extends Component {
   onClickTryPoster = () => this.getPosterItem()
 
   renderPosterFailureView = () => (
-    <div className="poster-view-container">
-      <img
-        src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675833886/alert-trianglealert_aup4gv.png"
-        className="alert-image"
-        alt="failure view"
-      />
-      <p className="failure-description">
-        Something went wrong. Please try again
-      </p>
-      <button type="button" className="try-btn" onClick={this.onClickTryPoster}>
-        Try Again
-      </button>
-    </div>
+    <>
+      <Header />
+      <div className="poster-view-container">
+        <img
+          src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675833886/alert-trianglealert_aup4gv.png"
+          className="alert-image"
+          alt="failure view"
+        />
+        <p className="failure-description">
+          Something went wrong. Please try again
+        </p>
+        <button
+          type="button"
+          className="try-btn"
+          onClick={this.onClickTryPoster}
+        >
+          Try Again
+        </button>
+      </div>
+    </>
   )
 
   renderPosterLoadingView = () => (
-    <div className="poster-view-container" testid="loader">
-      <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
-    </div>
+    <>
+      <Header />
+      <div className="poster-view-container" testid="loader">
+        <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+      </div>
+    </>
   )
 
   renderLoadingView = () => (
@@ -153,7 +164,12 @@ class Home extends Component {
     return <MovieSlider moviesList={trendingList} />
   }
 
-  onClickTryTrending = () => this.getTrendingItems()
+  onClickTryTrending = () => {
+    this.setState(
+      {trendingApiStatus: apiStatusConstants.loading},
+      this.getTrendingItems,
+    )
+  }
 
   renderTrendingFailureView = () => (
     <div className="movies-view-container">
@@ -175,7 +191,12 @@ class Home extends Component {
     </div>
   )
 
-  onClickTryOriginals = () => this.getOriginalItems()
+  onClickTryOriginals = () => {
+    this.setState(
+      {trendingApiStatus: apiStatusConstants.loading},
+      this.getOriginalItems,
+    )
+  }
 
   renderOriginalsFailureView = () => (
     <div className="movies-view-container">

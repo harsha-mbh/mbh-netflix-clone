@@ -8,6 +8,7 @@
   height: 501px;
   width: 100%;
 }
+
 .backdrop-details-container {
   margin-top: 40px;
   display: flex;
@@ -35,6 +36,7 @@
   color: #ffffff;
   margin-right: 16px;
 }
+
 .adult {
   font-family: 'Roboto';
   font-weight: 600;
@@ -50,6 +52,7 @@
   font-size: 18px;
   color: #ffffff;
 }
+
 .backdrop-overview {
   font-family: 'Roboto';
   font-weight: 500;
@@ -64,6 +67,48 @@
   padding: 8px 24px;
   border: none;
 }
+@media screen and (max-width: 767px) {
+  .movie-details-page {
+    height: 100%;
+  }
+  .backdrop-container {
+    height: 427px;
+    position: absolute;
+  }
+  .backdrop-details-container {
+    margin-top: 20px;
+    margin-left: 32px;
+  }
+  .backdrop-title {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  .duration-date-container {
+    margin-bottom: 19px;
+    margin-top: 0px;
+  }
+  .duration {
+    font-size: 16px;
+  }
+  .adult {
+    font-size: 16px;
+  }
+  .release-year {
+    font-size: 16px;
+  }
+  .backdrop-overview {
+    font-size: 14px;
+    width: 300px;
+    height: 63px;
+    margin-bottom: 24px;
+    margin-top: 0px;
+  }
+  .play-btn {
+    margin-top: 24px;
+    width: 74px;
+    height: 32px;
+  }
+}
 .movie-details-container {
   width: 80%;
   display: flex;
@@ -75,7 +120,9 @@
 .each-detail-container {
   display: flex;
   flex-direction: column;
+  margin-right: 25px;
 }
+
 .details-title {
   color: #94a3b8;
   font-family: 'Roboto';
@@ -83,8 +130,6 @@
   font-weight: 600;
 }
 .details-list-container {
-  padding-left: 0px;
-  list-style-type: none;
   margin-top: 0px;
 }
 .details-description {
@@ -103,6 +148,29 @@
   font-weight: 600;
   font-size: 24px;
   color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  .movie-details-container {
+    width: 90%;
+    position: absolute;
+    top: 440px;
+    margin-left: 32px;
+    flex-wrap: wrap;
+  }
+  .details-title {
+    font-size: 14px;
+  }
+  .details-description {
+    font-size: 12px;
+  }
+  .similar-movies-container {
+    margin-left: 32px;
+    position: absolute;
+    top: 670px;
+  }
+  .similar-movies-heading {
+    font-size: 20px;
+  }
 }
 .similar-movies-list-container {
   padding-left: 0px;
@@ -138,6 +206,19 @@
   font-size: 12px;
   font-family: 'Roboto';
 }
+@media screen and (max-width: 767px) {
+  .failure-image {
+    width: 220px;
+    max-width: 275px;
+    height: 170px;
+    max-height: 200px;
+    margin-bottom: 24px;
+  }
+  .failure-description {
+    font-size: 16px;
+  }
+}
+
 .loader-container {
   min-height: 100vh;
   display: flex;

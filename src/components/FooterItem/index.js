@@ -18,7 +18,7 @@ const FooterItem = () => (
         <FaYoutube />
       </li>
     </ul>
-    <p className="footer-description">Contact Us</p>
+    <p className="footer-description">Contact us</p>
   </div>
 )
 

@@ -37,6 +37,18 @@
   font-size: 12px;
   font-family: 'Roboto';
 }
+@media screen and (max-width: 767px) {
+  .failure-image {
+    width: 220px;
+    max-width: 275px;
+    height: 170px;
+    max-height: 200px;
+    margin-bottom: 24px;
+  }
+  .failure-description {
+    font-size: 16px;
+  }
+}
 .search-results-container {
   display: flex;
   flex-direction: row;
@@ -46,4 +58,10 @@
   margin-left: 165px;
   margin-top: 32px;
   flex-grow: 1;
+}
+@media screen and (max-width: 767px) {
+  .search-results-container {
+    margin-left: 32px;
+    margin-top: 16px;
+  }
 }

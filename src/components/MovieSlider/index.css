@@ -10,6 +10,21 @@
   width: 56px;
   height: 56px;
 }
+@media screen and (max-width: 767px) {
+  .slick-prev:before {
+    width: 24px;
+    height: 24px;
+  }
+  .slick-next:before {
+    width: 24px;
+    height: 24px;
+  }
+  .logo-image {
+    width: 140px;
+    height: 120px;
+    margin: 0px 13px;
+  }
+}
 .slick-next:before {
   color: #ffffff;
   width: 56px;

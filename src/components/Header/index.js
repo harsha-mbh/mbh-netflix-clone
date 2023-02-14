@@ -1,76 +1,147 @@
+import {Component} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import {HiOutlineSearch} from 'react-icons/hi'
+import {MdMenuOpen} from 'react-icons/md'
+import {ImCross} from 'react-icons/im'
 import './index.css'
 
-const Header = props => {
-  const {match, searchInput, onEnterSearch, onChangeSearchValue} = props
-  const {path} = match
-  const onChangeSearchInput = event => {
+class Header extends Component {
+  state = {showMenu: false}
+
+  onChangeSearchInput = event => {
+    const {onChangeSearchValue} = this.props
     onChangeSearchValue(event.target.value)
   }
 
-  const onClickSearch = () => {
+  onClickSearch = () => {
+    const {onEnterSearch} = this.props
     onEnterSearch()
   }
 
-  return (
-    <nav className="navbar">
-      <Link to="/">
-        <img
-          src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675404435/Group_7399logo_large_pbhqqr.png"
-          alt="website logo"
-          className="website-logo-desktop"
-        />
-        <img
-          src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675404330/Group_7399logo_small_ux0csf.png"
-          alt="website logo"
-          className="website-logo-mobile"
-        />
-      </Link>
-      <ul className="nav-menu">
-        <Link to="/" className="menu-link">
-          <li className="nav-link">Home</li>
-        </Link>
-        <Link to="/popular" className="menu-link">
-          <li className="nav-link">Popular</li>
-        </Link>
-      </ul>
-      <div className="search-account-container">
-        {path !== '/search' ? (
-          <Link to="/search">
-            <button type="button" className="search-btn" testid="searchButton">
-              <HiOutlineSearch />
-            </button>
-          </Link>
-        ) : (
-          <div className="search-container">
-            <input
-              placeholder="Search.."
-              className="input-field"
-              value={searchInput}
-              type="search"
-              onChange={onChangeSearchInput}
+  onClickMenu = () => {
+    this.setState({showMenu: true})
+  }
+
+  onClickCloseBtn = () => {
+    this.setState({showMenu: false})
+  }
+
+  render() {
+    const {showMenu} = this.state
+    const {match, searchInput} = this.props
+    const {path} = match
+    let homeStyle
+    let popularStyle
+    let accountStyle
+    let bgStyle
+    switch (path) {
+      case '/popular':
+        popularStyle = 'active'
+        bgStyle = 'transparant'
+        break
+      case '/':
+        homeStyle = 'active'
+        break
+      case '/account':
+        accountStyle = 'active'
+        bgStyle = 'transparant'
+        break
+      case '/search':
+        bgStyle = 'transparant'
+        break
+      default:
+        popularStyle = ''
+        homeStyle = ''
+        accountStyle = ''
+        bgStyle = ''
+    }
+    return (
+      <nav className={`navbar ${bgStyle}`}>
+        <div className="nav-container">
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675404435/Group_7399logo_large_pbhqqr.png"
+              alt="website logo"
+              className="website-logo-desktop"
             />
+          </Link>
+          <ul className="nav-menu">
+            <Link to="/" className="menu-link">
+              <li className={`nav-link ${homeStyle}`}>Home</li>
+            </Link>
+            <Link to="/popular" className="menu-link">
+              <li className={`nav-link ${popularStyle}`}>Popular</li>
+            </Link>
+          </ul>
+          <div className="search-account-container">
+            {path !== '/search' ? (
+              <Link to="/search">
+                <button
+                  type="button"
+                  className="search-btn"
+                  testid="searchButton"
+                >
+                  <HiOutlineSearch size={22} />
+                </button>
+              </Link>
+            ) : (
+              <div className="search-container">
+                <input
+                  placeholder="Search.."
+                  className="input-field"
+                  value={searchInput}
+                  type="search"
+                  onChange={this.onChangeSearchInput}
+                />
+                <button
+                  type="button"
+                  className="search-btn"
+                  testid="searchButton"
+                  onClick={this.onClickSearch}
+                >
+                  <HiOutlineSearch width={30} height={30} />
+                </button>
+              </div>
+            )}
+            <Link to="/account">
+              <img
+                src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675942939/NetflixClone/Avataravatar_qryco0.png"
+                alt="profile"
+                className="profile-img"
+              />
+            </Link>
             <button
               type="button"
-              className="search-btn"
-              testid="searchButton"
-              onClick={onClickSearch}
+              className="menu-btn"
+              onClick={this.onClickMenu}
             >
-              <HiOutlineSearch width={30} height={30} />
+              <MdMenuOpen size={22} />
             </button>
           </div>
+        </div>
+        {showMenu && (
+          <ul className="mobile-menu-list-container">
+            <Link to="/" className="menu-link">
+              <li className={`nav-link ${homeStyle}`}>Home</li>
+            </Link>
+            <Link to="/popular" className="menu-link">
+              <li className={`nav-link ${popularStyle}`}>Popular</li>
+            </Link>
+            <Link to="/account" className="menu-link">
+              <li className={`nav-link ${accountStyle}`}>Account</li>
+            </Link>
+            <button
+              className="cross-btn"
+              type="button"
+              onClick={this.onClickCloseBtn}
+            >
+              <ImCross size={12} />
+            </button>
+          </ul>
         )}
-        <Link to="/account">
-          <img
-            src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675942939/NetflixClone/Avataravatar_qryco0.png"
-            alt="profile"
-            className="profile-img"
-          />
-        </Link>
-      </div>
-    </nav>
-  )
+      </nav>
+    )
+  }
 }
 
 export default withRouter(Header)

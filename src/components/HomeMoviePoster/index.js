@@ -13,7 +13,11 @@ const HomeMoviePoster = props => {
         <Header />
         <div className="poster-details-container">
           <h1 className="title">{title}</h1>
-          <p className="overview">{overview}</p>
+          <p className="overview">
+            {overview !== undefined
+              ? overview.slice(0, overview.length / 2)
+              : null}
+          </p>
           <button className="play-btn" type="button">
             Play
           </button>

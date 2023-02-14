@@ -24,6 +24,13 @@ class MovieItemDetails extends Component {
     )
   }
 
+  onClickTryAgain = () => {
+    this.setState(
+      {apiStatus: apiStatusConstants.loading},
+      this.getMovieItemDetails,
+    )
+  }
+
   getMovieItemDetails = async () => {
     const {match} = this.props
     const {params} = match
@@ -93,15 +100,19 @@ class MovieItemDetails extends Component {
     return (
       <div className="backdrop-details-container">
         <h1 className="backdrop-title">{title}</h1>
-        <ul className="duration-date-container">
-          <li className="duration">{detailedRuntime}</li>
-          <li className="adult">{adult === true ? 'A' : 'U/A'}</li>
-          <li className="release-year">{releaseYear}</li>
-        </ul>
-        <p className="backdrop-overview">{overview}</p>
-        <button className="play-btn" type="button">
-          Play
-        </button>
+        <div className="duration-date-container">
+          <p className="duration">{detailedRuntime}</p>
+          <p className="adult">{adult === true ? 'A' : 'U/A'}</p>
+          <p className="release-year">{releaseYear}</p>
+        </div>
+        <p className="backdrop-overview">
+          {overview.slice(0, overview.length / 2)}
+        </p>
+        <div>
+          <button className="play-btn" type="button">
+            Play
+          </button>
+        </div>
       </div>
     )
   }
@@ -125,35 +136,31 @@ class MovieItemDetails extends Component {
     return (
       <div className="movie-details-container">
         <div className="each-detail-container">
-          <p className="details-title">Genres</p>
-          <ul className="details-list-container">
+          <h1 className="details-title">Genres</h1>
+          <div>
             {genres.map(eachGenre => (
-              <li key={eachGenre.id} className="details-description">
-                {eachGenre.name}
-              </li>
+              <p className="details-description">{eachGenre.name}</p>
             ))}
-          </ul>
+          </div>
         </div>
         <div className="each-detail-container">
-          <p className="details-title">Audio Available</p>
-          <ul className="details-list-container">
+          <h1 className="details-title">Audio Available</h1>
+          <div>
             {spokenLanguages.map(language => (
-              <li key={language.id} className="details-description">
-                {language.englishName}
-              </li>
+              <p className="details-description">{language.englishName}</p>
             ))}
-          </ul>
+          </div>
         </div>
         <div className="each-detail-container">
-          <p className="details-title">Rating Count</p>
+          <h1 className="details-title">Rating Count</h1>
           <p className="details-description">{voteCount}</p>
-          <p className="details-title">Rating Average</p>
+          <h1 className="details-title">Rating Average</h1>
           <p className="details-description">{voteAverage}</p>
         </div>
         <div className="each-detail-container">
-          <p className="details-title">Budget</p>
+          <h1 className="details-title">Budget</h1>
           <p className="details-description">{budget}</p>
-          <p className="details-title">Release Date</p>
+          <h1 className="details-title">Release Date</h1>
           <p className="details-description">{formattedDate}</p>
         </div>
       </div>
@@ -163,11 +170,13 @@ class MovieItemDetails extends Component {
   renderSimilarItemsDetails = () => {
     const {movieItemDetails} = this.state
     const {similarMovies} = movieItemDetails
+    const displayedSimilarMovies = similarMovies.slice(0, 6)
+
     return (
       <div className="similar-movies-container">
         <h1 className="similar-movies-heading">More like this</h1>
         <ul className="similar-movies-list-container">
-          {similarMovies.map(eachMovie => (
+          {displayedSimilarMovies.map(eachMovie => (
             <SimilarMovieItem key={eachMovie.id} movieDetails={eachMovie} />
           ))}
         </ul>
