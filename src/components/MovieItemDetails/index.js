@@ -105,9 +105,7 @@ class MovieItemDetails extends Component {
           <p className="adult">{adult === true ? 'A' : 'U/A'}</p>
           <p className="release-year">{releaseYear}</p>
         </div>
-        <p className="backdrop-overview">
-          {overview.slice(0, overview.length / 2)}
-        </p>
+        <p className="backdrop-overview">{overview}</p>
         <div>
           <button className="play-btn" type="button">
             Play
@@ -137,19 +135,23 @@ class MovieItemDetails extends Component {
       <div className="movie-details-container">
         <div className="each-detail-container">
           <h1 className="details-title">Genres</h1>
-          <div>
+          <ul>
             {genres.map(eachGenre => (
-              <p className="details-description">{eachGenre.name}</p>
+              <p className="details-description" key={eachGenre.id}>
+                {eachGenre.name}
+              </p>
             ))}
-          </div>
+          </ul>
         </div>
         <div className="each-detail-container">
           <h1 className="details-title">Audio Available</h1>
-          <div>
+          <ul>
             {spokenLanguages.map(language => (
-              <p className="details-description">{language.englishName}</p>
+              <p className="details-description" key={language.id}>
+                {language.englishName}
+              </p>
             ))}
-          </div>
+          </ul>
         </div>
         <div className="each-detail-container">
           <h1 className="details-title">Rating Count</h1>

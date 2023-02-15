@@ -3,10 +3,10 @@ import './index.css'
 
 const NotFound = () => (
   <div className="page-container">
-    <h1 className="heading">Lost Your Way?</h1>
+    <h1 className="heading">Lost Your Way ?</h1>
     <p className="description">
-      We are sorry the page you requested could not be found. Please go back to
-      home page.
+      we are sorry, the page you requested could not be found Please go back to
+      the homepage.
     </p>
 
     <Link to="/">

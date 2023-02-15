@@ -56,7 +56,9 @@ class SearchRoute extends Component {
     }
   }
 
-  onClickTryAgain = () => this.onEnterSearch()
+  onClickTryAgain = () => {
+    this.setState({apiStatus: apiStatusConstants.loading}, this.onEnterSearch)
+  }
 
   onChangeSearchValue = searchValue => {
     this.setState({

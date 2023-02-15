@@ -44,15 +44,15 @@ class Home extends Component {
       },
     }
     const response = await fetch(apiurl, options)
-    const data = await response.json()
-    const formattedData = data.results.map(eachResult => ({
-      backdropPath: eachResult.backdrop_path,
-      id: eachResult.id,
-      overview: eachResult.overview,
-      posterPath: eachResult.poster_path,
-      title: eachResult.title,
-    }))
     if (response.ok) {
+      const data = await response.json()
+      const formattedData = data.results.map(eachResult => ({
+        backdropPath: eachResult.backdrop_path,
+        id: eachResult.id,
+        overview: eachResult.overview,
+        posterPath: eachResult.poster_path,
+        title: eachResult.title,
+      }))
       this.setState({
         trendingList: formattedData,
         trendingApiStatus: apiStatusConstants.success,
@@ -73,15 +73,16 @@ class Home extends Component {
       },
     }
     const response = await fetch(apiurl, options)
-    const data = await response.json()
-    const formattedData = data.results.map(eachResult => ({
-      backdropPath: eachResult.backdrop_path,
-      id: eachResult.id,
-      overview: eachResult.overview,
-      posterPath: eachResult.poster_path,
-      title: eachResult.title,
-    }))
+
     if (response.ok) {
+      const data = await response.json()
+      const formattedData = data.results.map(eachResult => ({
+        backdropPath: eachResult.backdrop_path,
+        id: eachResult.id,
+        overview: eachResult.overview,
+        posterPath: eachResult.poster_path,
+        title: eachResult.title,
+      }))
       this.setState(
         {
           originalsList: formattedData,
@@ -193,7 +194,7 @@ class Home extends Component {
 
   onClickTryOriginals = () => {
     this.setState(
-      {trendingApiStatus: apiStatusConstants.loading},
+      {originalsApiStatus: apiStatusConstants.loading},
       this.getOriginalItems,
     )
   }
