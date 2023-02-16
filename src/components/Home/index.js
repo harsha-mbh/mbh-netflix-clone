@@ -114,7 +114,7 @@ class Home extends Component {
     return <HomeMoviePoster posterDetails={posterItem} />
   }
 
-  onClickTryPoster = () => this.getOriginalItems()
+  onClickTryPoster = () => this.onClickTryOriginals()
 
   renderPosterFailureView = () => (
     <>
