@@ -6,11 +6,11 @@ const SimilarMovieItem = props => {
   const {posterPath, title, id} = movieDetails
 
   return (
-    <li>
-      <Link to={`/movies/${id}`}>
+    <Link to={`/movies/${id}`}>
+      <li key={id}>
         <img src={posterPath} alt={title} className="similar-movie" />
-      </Link>
-    </li>
+      </li>
+    </Link>
   )
 }
 

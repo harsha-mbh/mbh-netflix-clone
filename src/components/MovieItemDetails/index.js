@@ -139,21 +139,21 @@ class MovieItemDetails extends Component {
       <div className="movie-details-container">
         <div className="each-detail-container">
           <h1 className="details-title">Genres</h1>
-          <ul>
+          <ul className="details-list-container">
             {genres.map(eachGenre => (
-              <p className="details-description" key={eachGenre.id}>
-                {eachGenre.name}
-              </p>
+              <li key={eachGenre.id}>
+                <p className="details-description">{eachGenre.name}</p>
+              </li>
             ))}
           </ul>
         </div>
         <div className="each-detail-container">
           <h1 className="details-title">Audio Available</h1>
-          <ul>
+          <ul className="details-list-container">
             {spokenLanguages.map(language => (
-              <p className="details-description" key={language.id}>
-                {language.englishName}
-              </p>
+              <li key={language.id}>
+                <p className="details-description">{language.englishName}</p>
+              </li>
             ))}
           </ul>
         </div>
@@ -210,19 +210,26 @@ class MovieItemDetails extends Component {
   }
 
   renderFailureView = () => (
-    <div className="failure-view-container">
-      <img
-        src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675923621/NetflixClone/Background-Completeerror-image_roinnx.png"
-        alt="failure view"
-        className="failure-image"
-      />
-      <p className="failure-description">
-        Something went wrong. Please try again
-      </p>
-      <button className="try-btn" type="button" onClick={this.onClickTryAgain}>
-        Try Again
-      </button>
-    </div>
+    <>
+      <Header />
+      <div className="failure-view-container">
+        <img
+          src="https://res.cloudinary.com/dkgkhdfnt/image/upload/v1675923621/NetflixClone/Background-Completeerror-image_roinnx.png"
+          alt="failure view"
+          className="failure-image"
+        />
+        <p className="failure-description">
+          Something went wrong. Please try again
+        </p>
+        <button
+          className="try-btn"
+          type="button"
+          onClick={this.onClickTryAgain}
+        >
+          Try Again
+        </button>
+      </div>
+    </>
   )
 
   renderLoadingView = () => (

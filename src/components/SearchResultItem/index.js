@@ -5,11 +5,11 @@ const SearchResultItem = props => {
   const {movieDetails} = props
   const {posterPath, title, id} = movieDetails
   return (
-    <li className="popular-movie-item">
-      <Link to={`/movies/${id}`}>
+    <Link to={`/movies/${id}`}>
+      <li className="popular-movie-item" key={id}>
         <img src={posterPath} alt={title} className="popular-movie-image" />
-      </Link>
-    </li>
+      </li>
+    </Link>
   )
 }
 

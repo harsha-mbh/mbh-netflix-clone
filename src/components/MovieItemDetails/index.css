@@ -131,12 +131,15 @@
 }
 .details-list-container {
   margin-top: 0px;
+  padding-left: 0px;
+  list-style-type: none;
 }
 .details-description {
+  color: #ffffff;
   font-size: 16px;
   font-weight: 400;
   font-family: 'Roboto';
-  color: #ffffff;
+
   margin-bottom: 5px;
   margin-top: 0px;
 }
