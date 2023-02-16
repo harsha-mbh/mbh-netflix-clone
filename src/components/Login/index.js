@@ -53,7 +53,6 @@ class Login extends Component {
       return <Redirect to="/" />
     }
     const {showSubmitError, errorMsg, username, password} = this.state
-    console.log(this.props)
     return (
       <div className="login-page-container">
         <img

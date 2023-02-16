@@ -37,21 +37,25 @@ class SearchRoute extends Component {
   }
 
   onEnterSearch = async () => {
-    this.setState({apiStatus: apiStatusConstants.loading})
-    const jwtToken = Cookies.get('jwt_token')
-    const {searchInput} = this.state
-    const apiUrl = `https://apis.ccbp.in/movies-app/movies-search?search=${searchInput}`
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    }
-    const response = await fetch(apiUrl, options)
-    if (response.ok) {
-      const data = await response.json()
-      this.onResponseOk(data.results)
-    } else {
+    try {
+      this.setState({apiStatus: apiStatusConstants.loading})
+      const jwtToken = Cookies.get('jwt_token')
+      const {searchInput} = this.state
+      const apiUrl = `https://apis.ccbp.in/movies-app/movies-search?search=${searchInput}`
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+      const response = await fetch(apiUrl, options)
+      if (response.ok) {
+        const data = await response.json()
+        this.onResponseOk(data.results)
+      } else {
+        this.onResponseFailure()
+      }
+    } catch (error) {
       this.onResponseFailure()
     }
   }

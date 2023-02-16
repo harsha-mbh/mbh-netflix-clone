@@ -35,62 +35,70 @@ class Home extends Component {
   }
 
   getTrendingItems = async () => {
-    const jwtToken = Cookies.get('jwt_token')
-    const apiurl = 'https://apis.ccbp.in/movies-app/trending-movies'
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    }
-    const response = await fetch(apiurl, options)
-    if (response.ok) {
-      const data = await response.json()
-      const formattedData = data.results.map(eachResult => ({
-        backdropPath: eachResult.backdrop_path,
-        id: eachResult.id,
-        overview: eachResult.overview,
-        posterPath: eachResult.poster_path,
-        title: eachResult.title,
-      }))
-      this.setState({
-        trendingList: formattedData,
-        trendingApiStatus: apiStatusConstants.success,
-      })
-    } else {
+    try {
+      const jwtToken = Cookies.get('jwt_token')
+      const apiurl = 'https://apis.ccbp.in/movies-app/trending-movies'
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+      const response = await fetch(apiurl, options)
+      if (response.ok) {
+        const data = await response.json()
+        const formattedData = data.results.map(eachResult => ({
+          backdropPath: eachResult.backdrop_path,
+          id: eachResult.id,
+          overview: eachResult.overview,
+          posterPath: eachResult.poster_path,
+          title: eachResult.title,
+        }))
+        this.setState({
+          trendingList: formattedData,
+          trendingApiStatus: apiStatusConstants.success,
+        })
+      } else {
+        this.setState({trendingApiStatus: apiStatusConstants.failure})
+      }
+    } catch (error) {
       this.setState({trendingApiStatus: apiStatusConstants.failure})
     }
   }
 
   getOriginalItems = async () => {
-    const jwtToken = Cookies.get('jwt_token')
-    const apiurl = 'https://apis.ccbp.in/movies-app/originals'
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-        Accept: 'application/json',
-      },
-    }
-    const response = await fetch(apiurl, options)
-
-    if (response.ok) {
-      const data = await response.json()
-      const formattedData = data.results.map(eachResult => ({
-        backdropPath: eachResult.backdrop_path,
-        id: eachResult.id,
-        overview: eachResult.overview,
-        posterPath: eachResult.poster_path,
-        title: eachResult.title,
-      }))
-      this.setState(
-        {
-          originalsList: formattedData,
-          originalsApiStatus: apiStatusConstants.success,
+    try {
+      const jwtToken = Cookies.get('jwt_token')
+      const apiurl = 'https://apis.ccbp.in/movies-app/originals'
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          Accept: 'application/json',
         },
-        this.getPosterItem,
-      )
-    } else {
+      }
+      const response = await fetch(apiurl, options)
+
+      if (response.ok) {
+        const data = await response.json()
+        const formattedData = data.results.map(eachResult => ({
+          backdropPath: eachResult.backdrop_path,
+          id: eachResult.id,
+          overview: eachResult.overview,
+          posterPath: eachResult.poster_path,
+          title: eachResult.title,
+        }))
+        this.setState(
+          {
+            originalsList: formattedData,
+            originalsApiStatus: apiStatusConstants.success,
+          },
+          this.getPosterItem,
+        )
+      } else {
+        this.setState({originalsApiStatus: apiStatusConstants.failure})
+      }
+    } catch (error) {
       this.setState({originalsApiStatus: apiStatusConstants.failure})
     }
   }
@@ -106,7 +114,7 @@ class Home extends Component {
     return <HomeMoviePoster posterDetails={posterItem} />
   }
 
-  onClickTryPoster = () => this.getPosterItem()
+  onClickTryPoster = () => this.getOriginalItems()
 
   renderPosterFailureView = () => (
     <>

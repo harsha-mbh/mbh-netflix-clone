@@ -26,29 +26,33 @@ class Popular extends Component {
   onClickTryAgain = () => this.getPopularMovies()
 
   getPopularMovies = async () => {
-    const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = 'https://apis.ccbp.in/movies-app/popular-movies'
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    }
-    const response = await fetch(apiUrl, options)
+    try {
+      const jwtToken = Cookies.get('jwt_token')
+      const apiUrl = 'https://apis.ccbp.in/movies-app/popular-movies'
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+      const response = await fetch(apiUrl, options)
 
-    if (response.ok) {
-      const data = await response.json()
-      const formattedData = data.results.map(eachResult => ({
-        id: eachResult.id,
-        backdropPath: eachResult.backdrop_path,
-        posterPath: eachResult.poster_path,
-        title: eachResult.title,
-      }))
-      this.setState({
-        apiStatus: apiStatusConstants.success,
-        popularMovies: formattedData,
-      })
-    } else {
+      if (response.ok) {
+        const data = await response.json()
+        const formattedData = data.results.map(eachResult => ({
+          id: eachResult.id,
+          backdropPath: eachResult.backdrop_path,
+          posterPath: eachResult.poster_path,
+          title: eachResult.title,
+        }))
+        this.setState({
+          apiStatus: apiStatusConstants.success,
+          popularMovies: formattedData,
+        })
+      } else {
+        this.setState({apiStatus: apiStatusConstants.failure})
+      }
+    } catch (error) {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }

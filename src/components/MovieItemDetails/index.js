@@ -32,51 +32,55 @@ class MovieItemDetails extends Component {
   }
 
   getMovieItemDetails = async () => {
-    const {match} = this.props
-    const {params} = match
-    const {id} = params
-    const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/movies-app/movies/${id}`
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    }
-    const response = await fetch(apiUrl, options)
-    if (response.ok) {
-      const data = await response.json()
-      const formattedData = {
-        adult: data.movie_details.adult,
-        backdropPath: data.movie_details.backdrop_path,
-        budget: data.movie_details.budget,
-        genres: data.movie_details.genres,
-        id: data.movie_details.id,
-        overview: data.movie_details.overview,
-        posterPath: data.movie_details.poster_path,
-        releaseDate: data.movie_details.release_date,
-        runtime: data.movie_details.runtime,
-        similarMovies: data.movie_details.similar_movies.map(eachMovie => ({
-          id: eachMovie.id,
-          backdropPath: eachMovie.backdrop_path,
-          posterPath: eachMovie.poster_path,
-          title: eachMovie.title,
-        })),
-        spokenLanguages: data.movie_details.spoken_languages.map(
-          eachLanguage => ({
-            id: eachLanguage.id,
-            englishName: eachLanguage.english_name,
-          }),
-        ),
-        title: data.movie_details.title,
-        voteAverage: data.movie_details.vote_average,
-        voteCount: data.movie_details.vote_count,
+    try {
+      const {match} = this.props
+      const {params} = match
+      const {id} = params
+      const jwtToken = Cookies.get('jwt_token')
+      const apiUrl = `https://apis.ccbp.in/movies-app/movies/${id}`
+      const options = {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
       }
-      this.setState({
-        movieItemDetails: formattedData,
-        apiStatus: apiStatusConstants.success,
-      })
-    } else {
+      const response = await fetch(apiUrl, options)
+      if (response.ok) {
+        const data = await response.json()
+        const formattedData = {
+          adult: data.movie_details.adult,
+          backdropPath: data.movie_details.backdrop_path,
+          budget: data.movie_details.budget,
+          genres: data.movie_details.genres,
+          id: data.movie_details.id,
+          overview: data.movie_details.overview,
+          posterPath: data.movie_details.poster_path,
+          releaseDate: data.movie_details.release_date,
+          runtime: data.movie_details.runtime,
+          similarMovies: data.movie_details.similar_movies.map(eachMovie => ({
+            id: eachMovie.id,
+            backdropPath: eachMovie.backdrop_path,
+            posterPath: eachMovie.poster_path,
+            title: eachMovie.title,
+          })),
+          spokenLanguages: data.movie_details.spoken_languages.map(
+            eachLanguage => ({
+              id: eachLanguage.id,
+              englishName: eachLanguage.english_name,
+            }),
+          ),
+          title: data.movie_details.title,
+          voteAverage: data.movie_details.vote_average,
+          voteCount: data.movie_details.vote_count,
+        }
+        this.setState({
+          movieItemDetails: formattedData,
+          apiStatus: apiStatusConstants.success,
+        })
+      } else {
+        this.setState({apiStatus: apiStatusConstants.failure})
+      }
+    } catch (error) {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
