@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import Header from '../Header'
+import FooterItem from '../FooterItem'
 import './index.css'
 
 const Account = props => {
@@ -41,6 +42,7 @@ const Account = props => {
           </button>
         </div>
       </div>
+      <FooterItem />
     </div>
   )
 }
