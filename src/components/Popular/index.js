@@ -23,7 +23,12 @@ class Popular extends Component {
     )
   }
 
-  onClickTryAgain = () => this.getPopularMovies()
+  onClickTryAgain = () => {
+    this.setState(
+      {apiStatus: apiStatusConstants.loading},
+      this.getPopularMovies,
+    )
+  }
 
   getPopularMovies = async () => {
     try {
