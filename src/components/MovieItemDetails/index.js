@@ -18,20 +18,13 @@ class MovieItemDetails extends Component {
   state = {movieItemDetails: '', apiStatus: apiStatusConstants.initial}
 
   componentDidMount() {
-    this.setState(
-      {apiStatus: apiStatusConstants.loading},
-      this.getMovieItemDetails,
-    )
+    this.getMovieItemDetails()
   }
 
-  onClickTryAgain = () => {
-    this.setState(
-      {apiStatus: apiStatusConstants.loading},
-      this.getMovieItemDetails,
-    )
-  }
+  onClickTryAgain = () => this.getMovieItemDetails()
 
   getMovieItemDetails = async () => {
+    this.setState({apiStatus: apiStatusConstants.loading})
     try {
       const {match} = this.props
       const {params} = match
@@ -233,9 +226,12 @@ class MovieItemDetails extends Component {
   )
 
   renderLoadingView = () => (
-    <div className="loader-container" testid="loader">
-      <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
-    </div>
+    <>
+      <Header />
+      <div className="loader-container" testid="loader">
+        <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+      </div>
+    </>
   )
 
   renderMovieItemDetails = () => {

@@ -24,13 +24,21 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.setState(
-      {trendingApiStatus: apiStatusConstants.loading},
-      this.getTrendingItems,
-    )
+    this.getOriginalMovies()
+    this.getTrendingMovies()
+  }
+
+  getOriginalMovies = () => {
     this.setState(
       {originalsApiStatus: apiStatusConstants.loading},
       this.getOriginalItems,
+    )
+  }
+
+  getTrendingMovies = () => {
+    this.setState(
+      {trendingApiStatus: apiStatusConstants.loading},
+      this.getTrendingItems,
     )
   }
 
@@ -173,12 +181,7 @@ class Home extends Component {
     return <MovieSlider moviesList={trendingList} />
   }
 
-  onClickTryTrending = () => {
-    this.setState(
-      {trendingApiStatus: apiStatusConstants.loading},
-      this.getTrendingItems,
-    )
-  }
+  onClickTryTrending = () => this.getTrendingMovies()
 
   renderTrendingFailureView = () => (
     <div className="movies-view-container">
@@ -200,12 +203,7 @@ class Home extends Component {
     </div>
   )
 
-  onClickTryOriginals = () => {
-    this.setState(
-      {originalsApiStatus: apiStatusConstants.loading},
-      this.getOriginalItems,
-    )
-  }
+  onClickTryOriginals = () => this.getOriginalMovies()
 
   renderOriginalsFailureView = () => (
     <div className="movies-view-container">

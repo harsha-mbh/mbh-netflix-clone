@@ -17,20 +17,13 @@ class Popular extends Component {
   state = {popularMovies: [], apiStatus: apiStatusConstants.initial}
 
   componentDidMount() {
-    this.setState(
-      {apiStatus: apiStatusConstants.loading},
-      this.getPopularMovies,
-    )
+    this.getPopularMovies()
   }
 
-  onClickTryAgain = () => {
-    this.setState(
-      {apiStatus: apiStatusConstants.loading},
-      this.getPopularMovies,
-    )
-  }
+  onClickTryAgain = () => this.getPopularMovies()
 
   getPopularMovies = async () => {
+    this.setState({apiStatus: apiStatusConstants.loading})
     try {
       const jwtToken = Cookies.get('jwt_token')
       const apiUrl = 'https://apis.ccbp.in/movies-app/popular-movies'

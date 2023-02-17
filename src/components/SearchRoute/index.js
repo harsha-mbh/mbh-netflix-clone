@@ -37,8 +37,8 @@ class SearchRoute extends Component {
   }
 
   onEnterSearch = async () => {
+    this.setState({apiStatus: apiStatusConstants.loading})
     try {
-      this.setState({apiStatus: apiStatusConstants.loading})
       const jwtToken = Cookies.get('jwt_token')
       const {searchInput} = this.state
       const apiUrl = `https://apis.ccbp.in/movies-app/movies-search?search=${searchInput}`
@@ -60,9 +60,7 @@ class SearchRoute extends Component {
     }
   }
 
-  onClickTryAgain = () => {
-    this.setState({apiStatus: apiStatusConstants.loading}, this.onEnterSearch)
-  }
+  onClickTryAgain = () => this.onEnterSearch()
 
   onChangeSearchValue = searchValue => {
     this.setState({
