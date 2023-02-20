@@ -14,7 +14,12 @@ const apiStatusConstants = {
 }
 
 class Popular extends Component {
-  state = {popularMovies: [], apiStatus: apiStatusConstants.initial}
+  state = {
+    popularMovies: [],
+    apiStatus: apiStatusConstants.initial,
+    currentPage: 1,
+    itemsPerPage: 12,
+  }
 
   componentDidMount() {
     this.getPopularMovies()
@@ -55,17 +60,54 @@ class Popular extends Component {
     }
   }
 
-  renderSuccessView = () => {
-    const {popularMovies} = this.state
+  renderPagination = () => {
+    const {popularMovies, currentPage, itemsPerPage} = this.state
+    const totalPages = Math.ceil(popularMovies.length / itemsPerPage)
+
+    if (totalPages === 1) {
+      return null
+    }
+    const pageNumbers = []
+    for (let i = 1; i <= totalPages; i += 1) {
+      pageNumbers.push(i)
+    }
     return (
-      <>
+      <div className="pagination-container">
+        {pageNumbers.map(pageNumber => (
+          <button
+            type="button"
+            key={pageNumber}
+            className={`page-number ${
+              pageNumber === currentPage ? 'active-page' : ''
+            }`}
+            onClick={() => this.handlePageClick(pageNumber)}
+          >
+            {pageNumber}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  handlePageClick = pageNumber => {
+    this.setState({currentPage: pageNumber})
+  }
+
+  renderSuccessView = () => {
+    const {popularMovies, itemsPerPage, currentPage} = this.state
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    const currentPageMovies = popularMovies.slice(startIndex, endIndex)
+    return (
+      <div className="popular-movies-container">
         <ul className="popular-movies-list-container">
-          {popularMovies.map(eachMovie => (
+          {currentPageMovies.map(eachMovie => (
             <PopularMovieItem key={eachMovie.id} movieDetails={eachMovie} />
           ))}
         </ul>
+        {this.renderPagination()}
         <FooterItem />
-      </>
+      </div>
     )
   }
 

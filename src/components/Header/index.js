@@ -66,12 +66,17 @@ class Header extends Component {
             />
           </Link>
           <ul className="nav-menu">
-            <Link to="/" className="menu-link">
-              <li className={`nav-link ${homeStyle}`}>Home</li>
-            </Link>
-            <Link to="/popular" className="menu-link">
-              <li className={`nav-link ${popularStyle}`}>Popular</li>
-            </Link>
+            <li className="nav-link">
+              <Link to="/" className={`menu-link ${homeStyle}`}>
+                Home
+              </Link>
+            </li>
+
+            <li className="nav-link">
+              <Link to="/popular" className={`menu-link ${popularStyle}`}>
+                Popular
+              </Link>
+            </li>
           </ul>
           <div className="search-account-container">
             {path !== '/search' ? (
@@ -121,15 +126,24 @@ class Header extends Component {
         </div>
         {showMenu && (
           <ul className="mobile-menu-list-container">
-            <Link to="/" className="menu-link">
-              <li className={`nav-link ${homeStyle}`}>Home</li>
-            </Link>
-            <Link to="/popular" className="menu-link">
-              <li className={`nav-link ${popularStyle}`}>Popular</li>
-            </Link>
-            <Link to="/account" className="menu-link">
-              <li className={`nav-link ${accountStyle}`}>Account</li>
-            </Link>
+            <li className="nav-link">
+              <Link to="/" className={`menu-link ${homeStyle}`}>
+                Home
+              </Link>
+            </li>
+
+            <li className="nav-link">
+              <Link to="/popular" className={`menu-link ${popularStyle}`}>
+                Popular
+              </Link>
+            </li>
+
+            <li className={`nav-link ${accountStyle}`}>
+              <Link to="/account" className="menu-link">
+                Account
+              </Link>
+            </li>
+
             <button
               className="cross-btn"
               type="button"

@@ -17,6 +17,8 @@ class SearchRoute extends Component {
     searchInput: '',
     searchResults: [],
     apiStatus: apiStatusConstants.initial,
+    currentPage: 1,
+    itemsPerPage: 12,
   }
 
   onResponseOk = results => {
@@ -86,14 +88,50 @@ class SearchRoute extends Component {
     )
   }
 
+  renderPagination = () => {
+    const {searchResults, currentPage, itemsPerPage} = this.state
+    const totalPages = Math.ceil(searchResults.length / itemsPerPage)
+
+    if (totalPages === 1) {
+      return null
+    }
+    const pageNumbers = []
+    for (let i = 1; i <= totalPages; i += 1) {
+      pageNumbers.push(i)
+    }
+    return (
+      <div className="pagination-container">
+        {pageNumbers.map(pageNumber => (
+          <button
+            type="button"
+            key={pageNumber}
+            className={`page-number ${
+              pageNumber === currentPage ? 'active-page' : ''
+            }`}
+            onClick={() => this.handlePageClick(pageNumber)}
+          >
+            {pageNumber}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  handlePageClick = pageNumber => {
+    this.setState({currentPage: pageNumber})
+  }
+
   renderNonEmptyResultsView = () => {
     const {searchResults} = this.state
     return (
-      <ul className="search-results-container">
-        {searchResults.map(eachResult => (
-          <SearchResultItem key={eachResult.id} movieDetails={eachResult} />
-        ))}
-      </ul>
+      <div className="search-items-container">
+        <ul className="search-results-container">
+          {searchResults.map(eachResult => (
+            <SearchResultItem key={eachResult.id} movieDetails={eachResult} />
+          ))}
+        </ul>
+        {this.renderPagination()}
+      </div>
     )
   }
 
