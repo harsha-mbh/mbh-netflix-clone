@@ -1,0 +1,14 @@
+.details-description {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+@media screen and (max-width: 767px) {
+  .details-description {
+    font-size: 12px;
+  }
+}

@@ -1,7 +1,7 @@
 .movie-details-page {
   min-height: 100vh;
   background-color: #181818;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 .backdrop-container {
   background-size: cover;
@@ -73,7 +73,6 @@
   }
   .backdrop-container {
     height: 427px;
-    position: absolute;
   }
   .backdrop-details-container {
     margin-top: 20px;
@@ -155,7 +154,6 @@
 @media screen and (max-width: 767px) {
   .movie-details-container {
     width: 90%;
-    position: absolute;
     top: 440px;
     margin-left: 32px;
     flex-wrap: wrap;
@@ -168,7 +166,6 @@
   }
   .similar-movies-container {
     margin-left: 32px;
-    position: absolute;
     top: 670px;
   }
   .similar-movies-heading {

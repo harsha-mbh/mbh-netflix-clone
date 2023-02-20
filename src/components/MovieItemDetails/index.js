@@ -4,6 +4,8 @@ import Cookies from 'js-cookie'
 import {format} from 'date-fns'
 import Header from '../Header'
 import SimilarMovieItem from '../SimilarMovieItem'
+import MovieDetailsGenreItem from '../MovieDetailsGenreItem'
+import MovieDetailsLanguageItem from '../MovieDetailsLanguageItem'
 import FooterItem from '../FooterItem'
 import './index.css'
 
@@ -134,9 +136,7 @@ class MovieItemDetails extends Component {
           <h1 className="details-title">Genres</h1>
           <ul className="details-list-container">
             {genres.map(eachGenre => (
-              <li key={eachGenre.id}>
-                <p className="details-description">{eachGenre.name}</p>
-              </li>
+              <MovieDetailsGenreItem key={eachGenre.id} genre={eachGenre} />
             ))}
           </ul>
         </div>
@@ -144,9 +144,7 @@ class MovieItemDetails extends Component {
           <h1 className="details-title">Audio Available</h1>
           <ul className="details-list-container">
             {spokenLanguages.map(language => (
-              <li key={language.id}>
-                <p className="details-description">{language.englishName}</p>
-              </li>
+              <MovieDetailsLanguageItem key={language.id} language={language} />
             ))}
           </ul>
         </div>
